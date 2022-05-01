@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <!--在spring配置文件中经常变化的配置信息, 通过properties属性文件来简化配置过程,易于维护-->
+    <!--<bean id="connection" class="indi.exer.yuluo.factorybean.ConnectionFactoryBean">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/jdbc?useSSL=false"/>
+        <property name="username" value="root"/>
+        <property name="passwd" value="w082916x"/>
+    </bean>-->
+
+    <!--整合属性配置文件和spring的配置文件-->
+
+    <context:property-placeholder location="classpath:/db.properties"/>
+
+    <bean id="connection" class="indi.exer.yuluo.factorybean.ConnectionFactoryBean">
+        <property name="driverClassName" value="${jdbc.driverClassName}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="passwd" value="${jdbc.passwd}"/>
+        <property name="username" value="${jdbc.username}"/>
+    </bean>
+
+
+
+
+
+</beans>

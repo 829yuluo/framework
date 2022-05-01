@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!--连接池的配置-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/jdbc?useSSL=false&amp;allowPublicKeyRetrieval=true"/>
+        <property name="name" value="root"/>
+        <property name="password" value="w082916x"/>
+    </bean>
+
+    <!--创建SqlSessionFactoryBean SqlSessionFactory-->
+    <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+
+        <property name="dataSource" ref="dataSource"/>
+        <!--实体类所在包的配置-->
+        <property name="typeAliasesPackage" value="indi.exer.yuluo.entity"/>
+
+        <property name="mapperLocations">
+            <list>
+                <value>classpath:indi.exer.yuluo.mapper/*Mapper.xml</value>
+            </list>
+        </property>
+
+    </bean>
+
+    <!--创建DAO对象 MapperScannerConfigure-->
+    <bean id="scanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactoryBean"/>
+        <!--DAO层位置-->
+        <property name="basePackage" value="indi.exer.yuluo.dao"/>
+    </bean>
+
+    <!--spring对事务的控制-->
+
+    <bean id="userService" class="indi.exer.yuluo.service.impl.UserServiceImpl">
+        <!--对私有的成员变量userDAO进行依赖注入-->
+        <property name="userDAO" ref="userDAO"/>
+    </bean>
+
+    <!--额外功能的配置  通过DataSourceTransactionManager-->
+    <!--注入连接池-->
+    <bean id="dataSourceTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!--切入点 通过注解完成 @Transactional-->
+
+    <!--组装切面 引入tx的  tx="http://www.springframework.org/schema/tx"  -->
+    <tx:annotation-driven transaction-manager="dataSourceTransactionManager"/>
+
+</beans>

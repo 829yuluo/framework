@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="indi.yuluo.dao.StudentDao">
+
+    <!--parameterType：指定dao接口形参的类型 属性值可以使用 java类的全限定名称 mybatis定义的别名
+
+     mybatis执行的sql语句：Preparing: select id,name,email,age from student where id=?
+     给 ？ 赋值：
+     参数Integer，执行的是PreparedStatement.setInt(1, 1005);
+     参数String，执行的是PreparedStatement.setString(1, "1005”);
+    -->
+
+    <select id="selectById" parameterType="int" resultType="indi.yuluo.domain.Student">
+        select id,name,email,age from student where id=#{studentId}
+    </select>
+
+    <!--dao接口是一个简单类型的参数 mapper文件获取这个参数使用#{任意字符}-->
+    <select id="selectByEmail" resultType="indi.yuluo.domain.Student">
+        select id, name, email, age from student where email=#{studentEmail}
+    </select>
+
+    <!--多个简单参数
+        使用了@Param命名之后，例如@Param("studentName")
+        #{和@Param名称相同}
+    -->
+    <select id="selectStudentByAgeOrName" resultType="indi.yuluo.domain.Student">
+        select id, name, email, age from student where name=#{studentName} or age=#{studentAge}
+    </select>
+
+    <!--一个java对象作为参数, 使用对象的属性作为参数值使用
+        简单的语法：#{属性名}， mybatis调用此属性的getXXX()方法来获取属性值
+    -->
+    <select id="selectByObject" resultType="indi.yuluo.domain.Student">
+        select id, name, email, age from student where #{name} or #{age}
+    </select>
+
+    <!--使用位置获取参数值-->
+    <select id="selectByPosition" resultType="indi.yuluo.domain.Student">
+        select id, name, email, age from student where name=#{arg0} or age=#{arg1}
+    </select>
+
+    <!--使用${}接受参数-->
+    <select id="selectQueryStudent" resultType="indi.yuluo.domain.Student">
+        select id,name,email,age from student where name=${studentName}
+    </select>
+
+    <!--传递列名进行排序-->
+    <select id="queryStudentOrderByColname" resultType="indi.yuluo.domain.Student">
+        select * from student order by ${colName}
+    </select>
+
+</mapper>

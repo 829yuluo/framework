@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/springMVC-demo02" />
+    <file type="web" url="file://$PROJECT_DIR$/springMVC-demo03" />
+    <file type="web" url="file://$PROJECT_DIR$/springMVC-demo1" />
+    <file type="web" url="file://$PROJECT_DIR$/springMVC-demo4" />
+    <file type="web" url="file://$PROJECT_DIR$/springMVC-demo5" />
+    <file type="web" url="file://$PROJECT_DIR$/springMVC-demo6" />
+    <file type="web" url="file://$PROJECT_DIR$/springMVC-rest" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/ch01-first/pom.xml" />
+        <option value="$PROJECT_DIR$/ch01-dao/pom.xml" />
+        <option value="$PROJECT_DIR$/ch03-proxy-dao/pom.xml" />
+        <option value="$PROJECT_DIR$/ch04-parameter/pom.xml" />
+        <option value="$PROJECT_DIR$/ch05-result/pom.xml" />
+        <option value="$PROJECT_DIR$/ch06-dynamic-sql/pom.xml" />
+        <option value="$PROJECT_DIR$/mybatisplus/pom.xml" />
+        <option value="$PROJECT_DIR$/../Demo10(suns spring)/simpleFactory/pom.xml" />
+        <option value="$PROJECT_DIR$/../Demo10(suns spring)/proxy/pom.xml" />
+        <option value="$PROJECT_DIR$/../Demo10(suns spring)/PersistenceLayer/pom.xml" />
+        <option value="$PROJECT_DIR$/../Demo10(suns spring)/spring-annotation/pom.xml" />
+        <option value="$PROJECT_DIR$/../Demo10(suns spring)/spring3.0x-annntation/pom.xml" />
+        <option value="$PROJECT_DIR$/spring5-impleFactory/pom.xml" />
+        <option value="$PROJECT_DIR$/spring5-proxy/pom.xml" />
+        <option value="$PROJECT_DIR$/spring5-PersistenceLayer/pom.xml" />
+        <option value="$PROJECT_DIR$/spring5-annotation/pom.xml" />
+        <option value="$PROJECT_DIR$/spring5-spring3.0x-annntation/pom.xml" />
+        <option value="$PROJECT_DIR$/springMVC-demo1/pom.xml" />
+        <option value="$PROJECT_DIR$/springMVC-demo02/pom.xml" />
+        <option value="$PROJECT_DIR$/springMVCdemo3/pom.xml" />
+        <option value="$PROJECT_DIR$/springMVC-demo03/pom.xml" />
+        <option value="$PROJECT_DIR$/springMVC-rest/pom.xml" />
+        <option value="$PROJECT_DIR$/springMVC-demo4/pom.xml" />
+        <option value="$PROJECT_DIR$/springMVC-demo5/pom.xml" />
+        <option value="$PROJECT_DIR$/springMVC-demo6/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

@@ -1,0 +1,11 @@
+#name: yuluo
+#password: w082916x
+
+# 根据对象
+account:
+  name: yuluo
+  password: 123456
+
+# yaml不能对list集合类型的数据进行解析  这种形式在获得list之后在对这个字符串在进行拆分
+# spring的EL表达式 必须以#号开头
+list: 1111,2222

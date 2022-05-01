@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="userService" class="indi.exer.yuluo.proxy.UserServiceImpl"/>
+
+    <bean id="orderService" class="indi.exer.yuluo.proxy.OrderServiceImpl"/>
+
+    <bean id="arround" class="indi.exer.yuluo.dynamic.Arround"/>
+    <!--<bean id="before" class="indi.exer.yuluo.dynamic.Before"/>-->
+
+    <!--切入点 ：
+                额外功能加入的位置
+
+                目的：由程序员根据自己的需要，决定额外功能加入给那个原始方法
+                register
+                login
+
+                简单的测试：所有方法都做为切入点，都加入额外的功能。
+
+                切入点表达式：
+                (* *(..)) 所有的类作为切入点
+                expression="execution(* *(..))"
+            -->
+    <aop:config>
+        <!--在所有类中添加-->
+        <!--<aop:pointcut id="pc" expression="execution(* *(..))"/>-->
+
+        <!--代表只对login方法进行加入额外功能-->
+        <!--<aop:pointcut id="pc" expression="execution(* login(..))"/>-->
+
+        <!--只对有两个string类型参数的login方法加入额外功能-->
+        <!--<aop:pointcut id="pc" expression="execution(* login(String, String))"/>-->
+
+        <!--注意：非java.lang包中的类型，必须要写全限定名-->
+        <!--<aop:pointcut id="pc" expression="execution(* register(indi.exer.yuluo.proxy.User))"/>-->
+
+        <!--限定包名和类名,定位更加准确-->
+        <!--<aop:pointcut id="pc" expression="execution(* indi.exer.yuluo.proxy.UserServiceImpl.register(indi.exer.yuluo.proxy.User))"/>-->
+
+
+        <!--以类来做为切入点, 给类中的所有方法加入额外功能-->
+        <!--<aop:pointcut id="pc" expression="execution(* indi.exer.yuluo.proxy.UserServiceImpl.*(..))"/>-->
+
+        <!--以包做为切入点, 给包里面有UserServiceImpl类中的所有方法加入额外功能
+                .   一个点，代表的是一级包
+                ..   两个点，代表的是多级包
+        -->
+        <!--<aop:pointcut id="pc" expression="execution(* *..UserServiceImpl.*(..))"/>-->
+
+        <!--@annotation注解添加额外功能的方法-->
+        <aop:pointcut id="pc" expression="@annotation(indi.exer.yuluo.proxy.Log)"/>
+
+        <!--组装 整合切入点和额外功能的类 的内容-->
+        <aop:advisor advice-ref="arround" pointcut-ref="pc"/>
+    </aop:config>
+
+
+
+</beans>

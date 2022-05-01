@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--让spring框架在设置包及其子包中扫描对应的注解，使其生效-->
+    <!--<context:component-scan base-package="indi.exer.yuluo"/>-->
+
+    <!--spring对于注解的排除策略-->
+    <!--
+        assignable：排除特定的类型，不进行扫描
+        annotation：排除特定的注解，不进行扫描
+        aspectj：   通过切入点表达式排除  只能用包和类的切入点
+        regex：     正则表达式排除策略
+        custom：    自定义排除策略 框架底层开发 （spring boot）
+
+        在使用时两种排除策略可以叠加使用
+    -->
+    <context:component-scan base-package="indi.exer.yuluo">
+        <!--排除User的注解id u -->
+        <!--<context:exclude-filter type="assignable" expression="indi.exer.yuluo.bean.User"/>-->
+
+        <!--排除UserServiceImpl-->
+        <!--<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>-->
+
+        <!--排除injection包下的所有注解  类切入点表达式："*..User"-->
+        <context:exclude-filter type="aspectj" expression="indi.exer.yuluo.injection..*"/>
+
+    </context:component-scan>
+
+    <!--2 包含方式 use-default-filters="false" 让spring的默认注解扫描失效-->
+    <context:component-scan base-package="indi.exer.yuluo" use-default-filters="false">
+
+        <!--include-filter 包含方式-->
+        <!--支持叠加-->
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+
+    </context:component-scan>
+
+    <!--可以覆盖@Component直接指定的id值 id值 class的值要和注解中设置的值一致-->
+    <bean id="user" class="indi.exer.yuluo.bean.User">
+        <property name="id" value="10"/>
+    </bean>
+
+    <!--读取properties属性配置文件 可以利用@PropertySource注解来代替相关的功能-->
+    <!--<context:property-placeholder location="classpath:init.properties"/>-->
+
+</beans>

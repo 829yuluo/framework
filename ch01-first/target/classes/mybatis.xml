@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--设置日志-->
+    <settings>
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+    </settings>
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <!--配置数据源-->
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <!--在其中使用&符号的时候要替换成为&amp,这是一个xml的配置文件,要替换为对应的实体符号-->
+                <property name="url" value="jdbc:mysql://localhost:3306/mybatis?useUnicode=true&amp;characterEncoding=utf-8"/>
+                <property name="username" value="root"/>
+                <property name="password" value="w082916x"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--指定其他mapper文件的位置 找到其他的sql语句位置
+    此路径是从target/classes根路径开始的
+    -->
+    <mappers>
+        <mapper resource="indi/yuluo/dao/StudentDao.xml"/>
+    </mappers>
+</configuration>

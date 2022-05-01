@@ -1,0 +1,4 @@
+indi\yuluo\dubbo\dao\UserMapper.class
+indi\yuluo\dubbo\model\User.class
+indi\yuluo\dubbo\service\UserService.class
+indi\yuluo\dubbo\service\impl\UserServiceImpl.class

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+
+    <!--声明dubbo服务的提供者名称，保证服务的唯一性-->
+    <dubbo:application name="009-zk-userservice-multi-provider"/>
+
+    <!--声明dubbo的协议和端口号-->
+    <dubbo:protocol name="dubbo" port="20880"/>
+
+    <!--使用注册中心-->
+    <dubbo:registry address="zookeeper://localhost:2181"/>
+
+    <!--暴露服务
+        有两个需要暴露的服务，消费者没办法区别，所以需要通过版本号来进行区分
+    -->
+    <dubbo:service
+            interface="indi.yuluo.dubbo.service.UserService"
+            ref="userServiceImpl"
+            version="1.0.0"/>
+
+    <dubbo:service
+            interface="indi.yuluo.dubbo.service.UserService"
+            ref="userServiceImpl2"
+            version="2.0.0"/>
+
+    <!--注入到spring的IOC容器中-->
+    <bean id="userServiceImpl" class="indi.yuluo.dubbo.service.impl.UserServiceImpl"/>
+    <bean id="userServiceImpl2" class="indi.yuluo.dubbo.service.impl.UserServiceImpl2"/>
+
+</beans>

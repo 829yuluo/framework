@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/spring5-PersistenceLayer/PersistenceLayer.iml" filepath="$PROJECT_DIR$/spring5-PersistenceLayer/PersistenceLayer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ch01-first/ch01-first.iml" filepath="$PROJECT_DIR$/ch01-first/ch01-first.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ch01-dao/ch02-dao.iml" filepath="$PROJECT_DIR$/ch01-dao/ch02-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ch03-proxy-dao/ch03-proxy-dao.iml" filepath="$PROJECT_DIR$/ch03-proxy-dao/ch03-proxy-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ch04-parameter/ch04-parameter.iml" filepath="$PROJECT_DIR$/ch04-parameter/ch04-parameter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ch05-result/ch05-result.iml" filepath="$PROJECT_DIR$/ch05-result/ch05-result.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ch06-dynamic-sql/ch06-dynamic-sql.iml" filepath="$PROJECT_DIR$/ch06-dynamic-sql/ch06-dynamic-sql.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mybatisplus/mybatisplus.iml" filepath="$PROJECT_DIR$/mybatisplus/mybatisplus.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring5-proxy/proxy.iml" filepath="$PROJECT_DIR$/spring5-proxy/proxy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring5-impleFactory/simpleFactory.iml" filepath="$PROJECT_DIR$/spring5-impleFactory/simpleFactory.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring5-annotation/spring-annotation.iml" filepath="$PROJECT_DIR$/spring5-annotation/spring-annotation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring5-spring3.0x-annntation/spring3.0x-annntation.iml" filepath="$PROJECT_DIR$/spring5-spring3.0x-annntation/spring3.0x-annntation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springMVC-demo03/springMVC-demo03.iml" filepath="$PROJECT_DIR$/springMVC-demo03/springMVC-demo03.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springMVC-demo1/springMVC-demo1.iml" filepath="$PROJECT_DIR$/springMVC-demo1/springMVC-demo1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springMVC-demo02/springMVC-demo2.iml" filepath="$PROJECT_DIR$/springMVC-demo02/springMVC-demo2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springMVC-demo4/springMVC-demo4.iml" filepath="$PROJECT_DIR$/springMVC-demo4/springMVC-demo4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springMVC-demo5/springMVC-demo5.iml" filepath="$PROJECT_DIR$/springMVC-demo5/springMVC-demo5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springMVC-demo6/springMVC-demo6.iml" filepath="$PROJECT_DIR$/springMVC-demo6/springMVC-demo6.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springMVC-rest/springMVC-rest.iml" filepath="$PROJECT_DIR$/springMVC-rest/springMVC-rest.iml" />
+    </modules>
+  </component>
+</project>

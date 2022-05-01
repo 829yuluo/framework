@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--创建myDateConverter转换器对象-->
+    <bean id="myDateConverter" class="indi.exer.yuluo.converter.MyDateConverter">
+        <property name="pattern" value="yyyy-MM-dd"/>
+    </bean>
+    <!--用于注册类型转换器--><!--注册的id命名是限定的converterService-->
+    <!--spring内置的日期类型转换器为 ”2021/11/14“ 当日期格式为这种时，会自己转换！-->
+    <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <property name="converters">
+            <set>
+                <ref bean="myDateConverter"/>
+            </set>
+        </property>
+    </bean>
+
+    <bean id="person" class="indi.exer.yuluo.converter.People" >
+        <property name="name" value="suns"/>
+        <property name="birthday" value="2021-11-14"/>
+
+    </bean>
+
+
+</beans>

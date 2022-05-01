@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="indi.yuluo.dao.StudentDao">
+
+    <!--定义sql代码片段-->
+    <sql id="select">
+        select * from student
+    </sql>
+
+    <select id="selectIf" resultType="indi.yuluo.domain.Student">
+        select id, name, email, age from student
+        /*为了语法正确，即在第一个if条件不成立时可以执行第二个if的条件要在where后面加上一个对结果不影响的sql语句*/
+        where id = -1
+        /*if 标签的使用 test的判断条件是对象的属性值
+            通过传入的参数只进行判断 表示的是name属性为空或者为空字符串时
+          */
+        <if test="name != null and name != ''">
+            or name = #{name}
+        </if>
+
+        <if test="age > 0">
+           /*为了保证最后组合到一起的sql语句正确，最后需要加 or 或者 and
+             使用大于和小于号时，大于>没问题，小于会被认为是一个标签的起始标签出现错误  需要使用实体符号替换
+             */
+            or age = #{age}
+        </if>
+    </select>
+
+    <!--where标签-->
+    <select id="selectWhere" resultType="indi.yuluo.domain.Student">
+        select * from student
+        <where>
+            <if test="name != null and name != ''">
+                or name = #{name}
+            </if>
+            <if test="age > 0">
+                or age &lt; #{age}
+            </if>
+        </where>
+    </select>
+
+    <!--foreach的第一种方式 简单类型
+        当list集合不为空时进行这样的处理
+    -->
+    <select id="selectForeach" resultType="indi.yuluo.domain.Student">
+        select * from student
+        <if test="list != null and list.size() > 0">
+            where id in
+            <foreach collection="list" open="(" close=")" separator="," item="studentId">
+                #{studentId}
+            </foreach>
+        </if>
+    </select>
+
+    <!--foreach第二种方式 遍历对象类型集合
+        取出student的id属性进行动态sql语句的拼接-->
+    <select id="selectForeach2" resultType="indi.yuluo.domain.Student">
+        <include refid="select"/>
+        <if test="list != null and list.size() > 0">
+            where id in
+            <foreach collection="list" open="(" close=")" separator="," item="students">
+                #{students.id}
+            </foreach>
+        </if>
+    </select>
+
+</mapper>

@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+<!--    id属性 名字（唯一）
+        class 属性配置全限定命名
+        -->
+
+<!--    <bean id = "person" class= "indi.exer.yuluo.basic.Person" />-->
+<!--    <bean id = "person1" class= "indi.exer.yuluo.basic.Person" />-->
+
+<!--
+    1， 配置文件细节：
+            只配置class属性
+            < bean class="indi.exer.yuluo.person" >
+      1）上述这种配置有id值：
+            beanDefinitionName = indi.exer.yuluo.basic.Person#0
+      2）应用场景：
+            如果这个bean只使用一次，那么就可以省略id的值
+            如果这个bean会使用多次，那么就可以省略id值
+-->
+<!--    <bean class = "indi.exer.yuluo.basic.Person"/>-->
+<!--
+    2，name属性的配置
+        1） 相同
+                id : 大名
+                name： 小名
+                作用：用于在spring 的配置文件中，为bean对象定义别名
+                id 和 name 属性的作用是等效的
+        2） 不同
+                别名可以定义多个
+                xml的id属性的值，命名要求：必须以字母开头，字母，数字，下划线，连字符 不能以特殊字符开头 /person（错）
+                name 属性的值：没有命名要求，可以随便写
+                name属性会使用在特殊命名的场景下 （使用spring + struts1时）
+
+                随着xml的发展 ID属性的限制如今已经不存在了
+
+-->
+
+<!--
+    3 代码
+        containsBean 和 containBeanDefinition
+-->
+
+<!--    <bean id="person" name="p" class = "indi.exer.yuluo.basic.Person"/>-->
+
+<!--    <bean id="person" name="p,p1" class = "indi.exer.yuluo.basic.Person">-->
+
+<!--        <property name="id">-->
+<!--            <value>2</value>-->
+<!--        </property>-->
+<!--        <property name="name">-->
+<!--            <value>huakai</value>-->
+<!--        </property>-->
+
+<!--    </bean>-->
+
+
+<!--
+    jdk内置类型的set注入详解
+        1.String + 8种基本类型
+        2.数组
+
+-->
+ <!--   <bean id="person" class="indi.exer.yuluo.basic.Person">
+
+        <property name="id">
+            <value>11</value>
+        </property>
+        <property name="name">
+            <value>yuluo</value>
+        </property>
+&lt;!&ndash;        给数组赋值&ndash;&gt;
+        <property name="emails">
+            <list>
+                <value>
+                    yuluo@huakai.com.cn
+                </value>
+                <value>
+                    780879337@qq.com
+                </value>
+                <value>
+                    31234321@qq.com
+                </value>
+            </list>
+        </property>
+&lt;!&ndash;        给set赋值&ndash;&gt;
+        <property name="tels">
+            <set>
+                <value>
+                    12343424242434
+                </value>
+                <value>
+                    45456456457377
+                </value>
+                <value>
+                    86566453634565
+                </value>
+                <value>
+                    123242344515455
+                </value>
+            </set>
+        </property>
+&lt;!&ndash;        给list赋值&ndash;&gt;
+        <property name="address">
+            <list>
+                <value>
+                    甘肃庆阳
+                </value>
+                <value>
+                    陕西西安
+                </value>
+                <value>
+                    甘肃兰州
+                </value>
+            </list>
+        </property>
+&lt;!&ndash;        给map赋值&ndash;&gt;
+        <property name="qqs">
+            <map>
+                <entry>
+&lt;!&ndash;                    其他类型
+                     <key><fef bean=“”/></key>
+                     <ref bean=""/>
+                     <key>里面写value的意义是map是string类型的
+                     &ndash;&gt;
+                    <key><value>yuluo</value></key>
+                    <value>1481556636</value>
+                </entry>
+                <entry>
+                    <key><value>huakai</value></key>
+                    <value>2457608344</value>
+                </entry>
+            </map>
+        </property>
+
+&lt;!&ndash;        给properties赋值
+            properties的值之能是String类型&ndash;&gt;
+        <property name="p">
+            <props>
+                <prop key="key1">value1</prop>
+                <prop key="key2">value2</prop>
+            </props>
+        </property>
+
+    </bean>-->
+
+<!--    <bean>在注解中的作用是创建对象  -->
+<!--    <bean id="UserService" class="indi.exer.yuluo.basic.UserServiceImpl">-->
+
+<!--        <property name="userDAO">-->
+
+<!--            <bean class="indi.exer.yuluo.basic.UserDAOImpl"/>-->
+
+<!--        </property>-->
+
+<!--    </bean>-->
+
+<!--    <bean id="userDAO" class="indi.exer.yuluo.basic.UserDAOImpl"/>-->
+
+<!--    <bean id="userservice" class="indi.exer.yuluo.basic.UserServiceImpl">-->
+<!--        <property name="userDAO">-->
+<!--&lt;!&ndash;            引入外部创建的userDAO类型&ndash;&gt;-->
+<!--            <ref bean="userDAO"/>-->
+<!--        </property>-->
+<!--    </bean>-->
+
+<!--    <bean id="userService" class="indi.exer.yuluo.basic.UserServiceImpl">-->
+<!--        <property name="userDAO" ref="userDAO"/>-->
+<!--    </bean>-->
+
+    <!--基于p命名空间的简化代码编写-->
+    <!--<bean id="person" class="indi.exer.yuluo.basic.Person" p:name="yuluo" p:id="12335667"/>-->
+<!--        <property name="name" value="yuluo"/>-->
+<!--        <property name="id" value="1234567"/>-->
+
+
+    <!--<bean id="customer" class="indi.exer.yuluo.constructer.Customer">-->
+        <!--构造方法注入
+
+        构造方法不同时，可以控制constructor标签的数量来控制使用的重载方法
+
+        构造方法相同时，通过type属性来进行区分
+
+        -->
+        <!--<constructor-arg>
+            <value>yuluo</value>
+        </constructor-arg>
+        <constructor-arg>
+            <value>12345678</value>
+        </constructor-arg>-->
+
+       <!-- <constructor-arg type="int">
+            <value>20</value>
+        </constructor-arg>-->
+
+    <!--</bean>-->
+
+    <!--如果class中指定的类型时FactoryBean接口的实现类，那么通过id值获得是这个类所创建的复杂对象 Connection-->
+    <!--<bean id="connection" class="indi.exer.yuluo.factorybean.ConnectionFactoryBean">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/jdbc?useSSL=false"/>
+        <property name="username" value="root"/>
+        <property name="passwd" value="w082916x"/>
+    </bean>-->
+
+    <!--<bean id="connectionFactory" class="indi.exer.yuluo.factorybean.ConnectionFactory"></bean>
+
+    <bean id="connection" factory-bean="connectionFactory" factory-method="getConnection"/>-->
+
+    <!--静态方法不用创建对象，所以省略了factory-bean标签-->
+    <!--<bean id="staticConnection" class="indi.exer.yuluo.factorybean.StaticConnetionFactory" factory-method="getConnection"/>-->
+
+    <!--scope（范围）可以控制简单对象的创建次数
+           singleton 创建一次 （默认值）
+           account = indi.exer.yuluo.scope.Account@4659191b
+           account = indi.exer.yuluo.scope.Account@4659191b
+           prototype 创建多个
+           account = indi.exer.yuluo.scope.Account@4659191b
+           account = indi.exer.yuluo.scope.Account@55634720
+
+
+        复杂对象通过FactoryBean的isSingleton方法的返回值来控制
+            true为一次
+            false为多次
+    -->
+ <!--   <bean id="account" scope="prototype" class="indi.exer.yuluo.scope.Account"/>-->
+
+    <!--scope为一次的时候，他在spring工厂创建时即创建对象-->
+    <!--<bean id="product" scope="singleton" class="indi.exer.yuluo.life.Product"/>-->
+
+    <!--scope为多次的时候，他在创建对象的时候才调用-->
+    <!--<bean id="product" scope="prototype" class="indi.exer.yuluo.life.Product"/>-->
+
+    <bean id="product" class="indi.exer.yuluo.life.Product" init-method="myInit" destroy-method="myDestory"/>
+
+</beans>
