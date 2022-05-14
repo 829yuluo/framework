@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!--springboot的父工程-->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.6.7</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <!--springboot项目信息-->
+    <groupId>indi.yuluo</groupId>
+    <artifactId>springboot-002-jsp</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>springboot-002-jsp</name>
+    <description>springboot-002-jsp</description>
+
+    <!--设置编译等级-->
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+
+    <!--依赖-->
+    <dependencies>
+        <dependency>
+           <!--springboot框架web项目的起步依赖-->
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!--springboot框架的junit单元测试的起步依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!--springboot自定义properties属性配置的依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <!--引入springboot内嵌tomcat对jsp的解析赖，不添加解析不了jsp-->
+        <!--仅仅只是展示jsp 只需要添加这一个依赖即可-->
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+        </dependency>
+    </dependencies>
+
+    <!--springboot项目编译打包的maven插件-->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+
+        <!--springboot项目默认推荐使用的前端引擎是thymeleaf
+            现在我们要使用springboot继承jsp，手动指定jsp最后编译的路径
+            而且springboot继承jsp编译jsp的路径是springboot规定好的位置
+            META—INF/resources-->
+        <resources>
+            <resource>
+                <!--源文件夹-->
+                <directory>src/main/webapp</directory>
+                <!--指定编译到MATA-INF/resources-->
+                <targetPath>META-INF/resources</targetPath>
+                <!--指定源文件中的那个资源要编译进入目标文件中
+                所有的-->
+                <includes>
+                    <include>*.*</include>
+                </includes>
+            </resource>
+        </resources>
+
+    </build>
+
+</project>

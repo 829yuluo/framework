@@ -1,0 +1,5 @@
+# 设置端口
+server.port:8081
+
+# 设置上下文路径
+server.servlet.context-path:/springboot

@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mybatis?severTimezone=GMT%2B8&characterEncoding=utf-8&ssl=false
+    username: root
+    password: w082916x
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  # 配置类型别名所对应的包
+  type-aliases-package: indi.yuluo.mybatisplus.enity

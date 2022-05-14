@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!--让父工程变成一个springboot工程-->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.6.7</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <groupId>indi.yuluo</groupId>
+    <artifactId>springboot-011-parent</artifactId>
+    <version>1.0.0</version>
+    <modules>
+        <module>../springboot-012-interface</module>
+    </modules>
+
+    <!--指定为项目的父工程
+        删掉src目录，只保留pom文件
+    -->
+    <packaging>pom</packaging>
+
+    <!--进行依赖版本号管理-->
+    <properties>
+        <java.version>8</java.version>
+        <dubbo-sprinbgoot-starter-version>2.0.0</dubbo-sprinbgoot-starter-version>
+        <zkclient.version>0.10</zkclient.version>
+        <mybatis-plus-spring-boot-starter-version>3.5.1</mybatis-plus-spring-boot-starter-version>
+    </properties>
+
+    <!--管理springboot父工程没有的起步依赖-->
+    <dependencyManagement>
+        <dependencies>
+            <!--dubbo起步依赖-->
+            <dependency>
+                <groupId>com.alibaba.spring.boot</groupId>
+                <artifactId>dubbo-spring-boot-starter</artifactId>
+                <version>${dubbo-sprinbgoot-starter-version}</version>
+            </dependency>
+
+            <!--zookeeper注册中心-->
+            <dependency>
+                <groupId>com.101tec</groupId>
+                <artifactId>zkclient</artifactId>
+                <version>${zkclient.version}</version>
+            </dependency>
+
+            <!--mybatis-plus起步依赖-->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus-spring-boot-starter-version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+</project>
